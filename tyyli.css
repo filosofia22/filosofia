@@ -29,16 +29,16 @@ body {
 
 main {
   position: relative;
-  z-index: 1;
-  margin-inline: auto;
-  padding-top: 1.5rem;
-  padding-inline: clamp(1rem, 4vw, 2rem);
+  z-index: 1; 
   width: 100%;
-  max-width: 950px;
   overflow-wrap: break-word;
   font-size: 1.25rem;
   box-sizing: border-box;
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
 }
+
 
 h1,
 h2,
@@ -65,7 +65,6 @@ p {
   color: white;
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   margin-top: 0;
-  margin-bottom: 2rem;
   line-height: 1.75;
 }
 

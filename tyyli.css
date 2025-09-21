@@ -14,7 +14,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  line-height: 1.5;
+  line-height: 1.75;
   letter-spacing: 0.009375rem;
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -23,7 +23,9 @@ body {
   overflow-y: scroll;
   scroll-padding-top: 3rem;
   background-color: rgb(39, 34, 34);
+  background: linear-gradient(to bottom, #272222,       #1c1a1a);
 }
+
 
 main {
   position: relative;
@@ -62,6 +64,23 @@ ul li {
 p {
   color: white;
   font-size: clamp(1rem, 2.5vw, 1.25rem);
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  line-height: 1.75;
+}
+
+
+
+strong {
+  color: #ffd700; /* kultainen sävy tummalla taustalla */
+  font-weight: bold;
+}
+
+em {
+  color: #ccc;
+  font-style: italic;
+}
+
+h1, h2, h3 {
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
 }

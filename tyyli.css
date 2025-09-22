@@ -84,3 +84,10 @@ em {
   color: #ccc;
   font-style: italic;
 }
+
+h6 {
+  font-size: clamp(1.3rem, 3vw, 1.5rem);
+  color: white;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+  text-align: center;
+}

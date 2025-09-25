@@ -42,22 +42,34 @@ main {
   overflow-wrap: break-word;
 }
 
-/* ============================= */
-/* Typografia                    */
-/* ============================= */
 h1,
 h2,
 h3,
 h4,
 h5 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  line-height: clamp(2rem, 5vw, 3.5rem);
-  letter-spacing: 0;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  line-height: clamp(2.2rem, 5vw, 3.8rem);
+  letter-spacing: 0.03rem;
   text-align: center;
-  color: white;
-  margin-top: 0;
+  color: #ffffff;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+h6 {
+  font-size: clamp(1.4rem, 3vw, 1.7rem);
+  color: #e0e0e0;
+  text-align: center;
+  margin-top: 2rem;
   margin-bottom: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02rem;
   text-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+  font-style: italic;
 }
 
 p {
@@ -80,9 +92,11 @@ strong {
   font-weight: bold;
   font-size: 1.3rem;
   line-height: 1.8;
-  margin: 2rem 0;
-  padding: 0.5rem 0;
+  margin: 2.5rem 0;
+  padding: 0.75rem 1rem;
   color: #f0f0f0;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid #888;
   text-align: center;
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
 }
@@ -90,11 +104,4 @@ strong {
 em {
   color: #ccc;
   font-style: italic;
-}
-
-h6 {
-  font-size: clamp(1.3rem, 3vw, 1.5rem);
-  color: white;
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
-  text-align: center;
 }

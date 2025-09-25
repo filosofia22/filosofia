@@ -76,7 +76,15 @@ ul li {
 }
 
 strong {
+  display: block;
   font-weight: bold;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin: 2rem 0;
+  padding: 0.5rem 0;
+  color: #f0f0f0;
+  text-align: center;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
 }
 
 em {

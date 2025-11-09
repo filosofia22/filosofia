@@ -9,6 +9,9 @@
 </head>
 
 <main>
+
+<button id="themeToggle">Vaihda vaalea teema</button>
+
   <h1>Palkkatyö</h1>
 <p>Ennen kuin edes aloitan, olen hyvin tietoinen siitä, että yhteiskunta ei toimi ilman työntekijöitä, ja että kapitalistinen järjestelmä on mahdollistanut sen ylellisyyden ja elintason, josta monet meistä nykyään nauttivat. Tässä kirjoituksessa en kuitenkaan pyri tarkastelemaan järjestelmää, en pohdi tätä poliittisesta ja suuremman hyvän näkökulmasta, vaan keskityn yksilön kokemukseen. Tämä ei noudata tyypillistä akateemista rakennetta ja standardeja, eikä täydellistä logiikkaa. Se sisältää runsaasti retoriikkaa, sekä monien filosofien ajatuksia eikä vain omiani. Tämä on tahalteen provosoiva, sillä sen tarkoitus ei ole miellyttää, vaan ravistella.</p>
 
@@ -138,6 +141,17 @@ Ilman kohtuullisuutta, rahan tarve muuttuu ahneudeksi, valta tyranniaksi, nautin
     valinta.</p>
 
 </main>
+
+<script>
+  const button = document.getElementById('themeToggle');
+  button.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    button.textContent = document.body.classList.contains('light-theme')
+      ? 'Vaihda tumma teema'
+      : 'Vaihda vaalea teema';
+  });
+</script>
+
 </body>
 
 </html>

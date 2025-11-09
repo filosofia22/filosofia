@@ -1,6 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 /* ============================= */
+/* Teemamuuttujat (oletus: tumma) */
+/* ============================= */
+:root {
+  /* Värit */
+  --bg-gradient-top: #272222;
+  --bg-gradient-bottom: #1c1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #cccccc;
+  --heading-shadow: rgba(255, 255, 255, 0.15);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --strong-bg: rgba(255, 255, 255, 0.05);
+  --strong-border: #888;
+
+  /* Nappi (tumma teema) */
+  --btn-bg: #333333;
+  --btn-text: #f0f0f0;
+  --btn-shadow: rgba(0, 0, 0, 0.35);
+  --btn-hover-bg: #3d3d3d;
+  --btn-hover-text: #ffffff;
+
+  /* Typografia ja layout */
+  --font-family: 'Roboto', sans-serif;
+  --line-height: 1.75;
+  --letter-spacing: 0.009375rem;
+}
+
+/* ============================= */
+/* Vaalea teema                  */
+/* ============================= */
+.light-theme {
+  --bg-gradient-top: #f5f5f7;
+  --bg-gradient-bottom: #ffffff;
+  --text-primary: #222222;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+  --heading-shadow: rgba(0, 0, 0, 0.08);
+  --border-color: rgba(0, 0, 0, 0.12);
+  --strong-bg: rgba(0, 0, 0, 0.05);
+  --strong-border: #444;
+
+  /* Nappi (vaalea teema) */
+  --btn-bg: #ffffff;
+  --btn-text: #222222;
+  --btn-shadow: rgba(0, 0, 0, 0.15);
+  --btn-hover-bg: #f2f2f2;
+  --btn-hover-text: #111111;
+}
+
+/* ============================= */
 /* Yleiset asetukset             */
 /* ============================= */
 *,
@@ -14,15 +64,15 @@ html {
   padding: 0;
   scroll-behavior: smooth;
   overflow-x: hidden;
-  background: linear-gradient(to bottom, #272222, #1c1a1a);
+  background: linear-gradient(to bottom, var(--bg-gradient-top), var(--bg-gradient-bottom));
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.75;
-  letter-spacing: 0.009375rem;
+  font-family: var(--font-family);
+  line-height: var(--line-height);
+  letter-spacing: var(--letter-spacing);
   background-color: transparent;
   overflow-x: hidden;
   min-height: 100vh;
@@ -51,29 +101,29 @@ h5 {
   line-height: clamp(2.2rem, 5vw, 3.8rem);
   letter-spacing: 0.03rem;
   text-align: center;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-top: 2rem;
   margin-bottom: 1.5rem;
   text-transform: uppercase;
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 6px var(--heading-shadow);
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 0.5rem;
 }
 
 h6 {
   font-size: clamp(1.4rem, 3vw, 1.7rem);
-  color: #e0e0e0;
+  color: var(--text-secondary);
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-weight: 500;
   letter-spacing: 0.02rem;
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 4px var(--heading-shadow);
   font-style: italic;
 }
 
 p {
-  color: white;
+  color: var(--text-primary);
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   margin-top: 0;
   margin-bottom: 2rem;
@@ -81,7 +131,7 @@ p {
 }
 
 ul li {
-  color: white;
+  color: var(--text-primary);
   font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.6;
   margin-bottom: 0.25rem;
@@ -94,46 +144,65 @@ strong {
   line-height: 1.8;
   margin: 2.5rem 0;
   padding: 0.75rem 1rem;
-  color: #f0f0f0;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-left: 4px solid #888;
+  color: var(--text-secondary);
+  background-color: var(--strong-bg);
+  border-left: 4px solid var(--strong-border);
   text-align: center;
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 6px var(--heading-shadow);
 }
 
 em {
-  color: #ccc;
+  color: var(--text-muted);
   font-style: italic;
 }
 
-.light-theme html {
-  background: linear-gradient(to bottom, #f0f0f0, #ffffff);
+/* ============================= */
+/* Teemanvaihtonappi             */
+/* ============================= */
+#themeToggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  box-shadow: 0 8px 20px var(--btn-shadow);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.08s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  backdrop-filter: saturate(1.2) blur(6px);
 }
 
-.light-theme body {
-  background-color: transparent;
+#themeToggle:hover {
+  background-color: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
+  box-shadow: 0 10px 24px var(--btn-shadow);
 }
 
-.light-theme h1,
-.light-theme h2,
-.light-theme h3,
-.light-theme h4,
-.light-theme h5,
-.light-theme h6 {
-  color: #222 !important;
-  text-shadow: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+#themeToggle:active {
+  transform: translateY(1px);
 }
 
-.light-theme p,
-.light-theme ul li,
-.light-theme em {
-  color: #333 !important;
+/* Varmistetaan kontrasti gradienttia vasten */
+@media (prefers-reduced-transparency: reduce) {
+  #themeToggle {
+    backdrop-filter: none;
+  }
 }
 
-.light-theme strong {
-  color: #111 !important;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-left: 4px solid #444;
-  text-shadow: none;
+/* ============================= */
+/* Pienet parannukset            */
+/* ============================= */
+::selection {
+  background: var(--text-secondary);
+  color: var(--bg-gradient-bottom);
 }

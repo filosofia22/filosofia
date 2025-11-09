@@ -105,3 +105,31 @@ em {
   color: #ccc;
   font-style: italic;
 }
+
+.light-theme html {
+  background: linear-gradient(to bottom, #f0f0f0, #ffffff);
+}
+
+.light-theme body {
+  background-color: transparent;
+}
+
+.light-theme h1,
+.light-theme h2,
+.light-theme h3,
+.light-theme h4,
+.light-theme h5,
+.light-theme h6,
+.light-theme p,
+.light-theme ul li,
+.light-theme strong,
+.light-theme em {
+  color: #222 !important;
+  text-shadow: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-theme strong {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #444;
+}

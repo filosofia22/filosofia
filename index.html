@@ -10,7 +10,7 @@
 
 <main>
 
-<button id="themeToggle">Vaihda vaalea teema</button>
+<button id="themeToggle" aria-pressed="false">Vaihda vaalea teema</button>
 
   <h1>Palkkatyö</h1>
 <p>Ennen kuin edes aloitan, olen hyvin tietoinen siitä, että yhteiskunta ei toimi ilman työntekijöitä, ja että kapitalistinen järjestelmä on mahdollistanut sen ylellisyyden ja elintason, josta monet meistä nykyään nauttivat. Tässä kirjoituksessa en kuitenkaan pyri tarkastelemaan järjestelmää, en pohdi tätä poliittisesta ja suuremman hyvän näkökulmasta, vaan keskityn yksilön kokemukseen. Tämä ei noudata tyypillistä akateemista rakennetta ja standardeja, eikä täydellistä logiikkaa. Se sisältää runsaasti retoriikkaa, sekä monien filosofien ajatuksia eikä vain omiani. Tämä on tahalteen provosoiva, sillä sen tarkoitus ei ole miellyttää, vaan ravistella.</p>
@@ -142,22 +142,38 @@ Ilman kohtuullisuutta, rahan tarve muuttuu ahneudeksi, valta tyranniaksi, nautin
 
 </main>
 <script>
-  const button = document.getElementById('themeToggle');
-  const body = document.body;
+  (function() {
+    const btn = document.getElementById('themeToggle');
+    const root = document.documentElement; // html
+    const body = document.body;
 
-  // Palauta teema käyttäjän valinnasta
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') {
-    body.classList.add('light-theme');
-    button.textContent = 'Vaihda tumma teema';
-  }
+    // Palautetaan tallennettu teema (light/dark)
+    const saved = localStorage.getItem('site-theme');
+    if (saved === 'light') {
+      root.classList.add('light-theme');
+      body.classList.add('light-theme');
+      btn.textContent = 'Vaihda tumma teema';
+      btn.setAttribute('aria-pressed', 'true');
+    } else {
+      // varmistus: poista jos jostain syystä lisätty
+      root.classList.remove('light-theme');
+      body.classList.remove('light-theme');
+      btn.textContent = 'Vaihda vaalea teema';
+      btn.setAttribute('aria-pressed', 'false');
+    }
 
-  button.addEventListener('click', () => {
-    body.classList.toggle('light-theme');
-    const lightOn = body.classList.contains('light-theme');
-    button.textContent = lightOn ? 'Vaihda tumma teema' : 'Vaihda vaalea teema';
-    localStorage.setItem('theme', lightOn ? 'light' : 'dark');
-  });
+    btn.addEventListener('click', () => {
+      const turningOn = !root.classList.contains('light-theme');
+      // Lisätään/poistetaan molemmilta tasoilta varmistaen muuttujien periytyminen
+      root.classList.toggle('light-theme', turningOn);
+      body.classList.toggle('light-theme', turningOn);
+
+      btn.textContent = turningOn ? 'Vaihda tumma teema' : 'Vaihda vaalea teema';
+      btn.setAttribute('aria-pressed', turningOn ? 'true' : 'false');
+
+      localStorage.setItem('site-theme', turningOn ? 'light' : 'dark');
+    });
+  })();
 </script>
 
 </body>

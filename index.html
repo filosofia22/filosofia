@@ -10,7 +10,7 @@
 
 <main>
 
-<button id="themeToggle">Vaihda teemaa</button>
+<button id="themeToggle">Vaihda vaalea teema</button>
 
   <h1>Palkkatyö</h1>
 <p>Ennen kuin edes aloitan, olen hyvin tietoinen siitä, että yhteiskunta ei toimi ilman työntekijöitä, ja että kapitalistinen järjestelmä on mahdollistanut sen ylellisyyden ja elintason, josta monet meistä nykyään nauttivat. Tässä kirjoituksessa en kuitenkaan pyri tarkastelemaan järjestelmää, en pohdi tätä poliittisesta ja suuremman hyvän näkökulmasta, vaan keskityn yksilön kokemukseen. Tämä ei noudata tyypillistä akateemista rakennetta ja standardeja, eikä täydellistä logiikkaa. Se sisältää runsaasti retoriikkaa, sekä monien filosofien ajatuksia eikä vain omiani. Tämä on tahalteen provosoiva, sillä sen tarkoitus ei ole miellyttää, vaan ravistella.</p>
@@ -141,14 +141,22 @@ Ilman kohtuullisuutta, rahan tarve muuttuu ahneudeksi, valta tyranniaksi, nautin
     valinta.</p>
 
 </main>
-
 <script>
   const button = document.getElementById('themeToggle');
+  const body = document.body;
+
+  // Palauta teema käyttäjän valinnasta
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') {
+    body.classList.add('light-theme');
+    button.textContent = 'Vaihda tumma teema';
+  }
+
   button.addEventListener('click', () => {
-    document.body.classList.toggle('light-theme');
-    button.textContent = document.body.classList.contains('light-theme')
-      ? 'Vaihda tumma teema'
-      : 'Vaihda vaalea teema';
+    body.classList.toggle('light-theme');
+    const lightOn = body.classList.contains('light-theme');
+    button.textContent = lightOn ? 'Vaihda tumma teema' : 'Vaihda vaalea teema';
+    localStorage.setItem('theme', lightOn ? 'light' : 'dark');
   });
 </script>
 

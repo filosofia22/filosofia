@@ -119,17 +119,21 @@ em {
 .light-theme h3,
 .light-theme h4,
 .light-theme h5,
-.light-theme h6,
-.light-theme p,
-.light-theme ul li,
-.light-theme strong,
-.light-theme em {
+.light-theme h6 {
   color: #222 !important;
   text-shadow: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.light-theme p,
+.light-theme ul li,
+.light-theme em {
+  color: #333 !important;
+}
+
 .light-theme strong {
+  color: #111 !important;
   background-color: rgba(0, 0, 0, 0.05);
   border-left: 4px solid #444;
+  text-shadow: none;
 }

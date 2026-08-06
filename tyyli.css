@@ -185,3 +185,62 @@ em { color: var(--text-muted); font-style: italic; }
   background: var(--text-primary);
   color: var(--bg-gradient-bottom);
 }
+
+/* Artikkelilista */
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 3rem 0;
+  display: grid;
+  gap: 2rem;
+}
+
+/* Artikkelikortti */
+.article-box {
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  background: var(--strong-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.article-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* Otsikko */
+.article-title {
+  margin: 0 0 1rem 0;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  color: var(--text-primary);
+  text-align: left;
+  border: none;
+  text-shadow: none;
+}
+
+/* Preview */
+.article-preview {
+  margin: 0 0 1.5rem 0;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+/* Linkki */
+.article-link {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--btn-text);
+  background: var(--btn-bg);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--btn-border);
+  text-decoration: none;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.article-link:hover {
+  background: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
+}

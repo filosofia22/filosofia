@@ -244,3 +244,8 @@ em { color: var(--text-muted); font-style: italic; }
   background: var(--btn-hover-bg);
   color: var(--btn-hover-text);
 }
+
+.speaker {
+  font-weight: bold;
+  color: #444;
+}

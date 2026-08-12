@@ -132,6 +132,15 @@
       localStorage.setItem('site-theme', turningOn ? 'light' : 'dark');
     });
   })();
+
+
+document.querySelectorAll("p").forEach(p => {
+  const text = p.textContent;
+  const firstWord = text.split(" ")[0];
+  const rest = text.substring(firstWord.length);
+  p.innerHTML = `<span class="speaker">${firstWord}</span>${rest}`;
+});
+
 </script>
 
 </body>

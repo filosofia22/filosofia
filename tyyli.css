@@ -126,20 +126,6 @@ ul li {
   margin-bottom: 0.25rem;
 }
 
-strong {
-  display: block;
-  font-weight: bold;
-  font-size: 1.3rem;
-  line-height: 1.8;
-  margin: 2.5rem 0;
-  padding: 0.75rem 1rem;
-  color: var(--text-secondary);
-  background-color: var(--strong-bg);
-  border-left: 4px solid var(--strong-border);
-  text-align: center;
-  text-shadow: 0 0 6px var(--heading-shadow);
-}
-
 em { color: var(--text-muted); font-style: italic; }
 
 /* Teemanvaihtonappi */
@@ -285,4 +271,18 @@ body {
 
 body {
   font-family: "Inter", "Helvetica Neue", sans-serif;
+}
+
+strong {
+  display: block;
+  font-weight: bold;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin: 2.5rem 0;
+  padding: 0.75rem 1rem;
+  color: var(--text-secondary);
+  background-color: var(--strong-bg);
+  border-left: 4px solid var(--strong-border);
+  text-align: center;
+  text-shadow: 0 0 6px var(--heading-shadow);
 }

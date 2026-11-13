@@ -1,285 +1,718 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400;1,7..72,500&display=swap');
 
-/* Teemamuuttujat oletus: tumma */
+/* ==================================================
+   FILOSOFINEN TEKSTI – CSS
+   Klassinen, elegantti ja rauhallinen ulkoasu
+   Tumma ja vaalea teema
+   ================================================== */
+
+
+/* ==================================================
+   1. TEEMAMUUTTUJAT – TUMMA TEEMA
+   ================================================== */
+
 :root {
-  --bg-gradient-top: #272222;
-  --bg-gradient-bottom: #1c1a1a;
-  --text-primary: #ffffff;
-  --text-secondary: #e0e0e0;
-  --text-muted: #cccccc;
-  --heading-shadow: rgba(255,255,255,0.15);
-  --border-color: rgba(255,255,255,0.1);
-  --strong-bg: rgba(255,255,255,0.05);
-  --strong-border: #888;
+  color-scheme: dark;
 
-  /* nappi oletus (tumma teema) */
-  --btn-bg: #333333;
-  --btn-text: #f0f0f0;
-  --btn-border: rgba(255,255,255,0.08);
-  --btn-shadow: rgba(0,0,0,0.35);
-  --btn-hover-bg: #3d3d3d;
+  /* Tausta */
+  --bg-gradient-top: #272323;
+  --bg-gradient-bottom: #191717;
+  --bg-surface: #302b2a;
+
+  /* Tekstit */
+  --text-primary: #eee9e5;
+  --text-secondary: #d2cac4;
+  --text-muted: #a79d96;
+
+  /* Otsikot */
+  --heading-shadow: rgba(255,255,255,0.07);
+
+  /* Reunat */
+  --border-color: rgba(255,255,255,0.11);
+  --strong-bg: rgba(255,255,255,0.035);
+  --strong-border: #8c8179;
+
+  /* Painikkeet */
+  --btn-bg: #383230;
+  --btn-text: #eee9e5;
+  --btn-border: rgba(255,255,255,0.12);
+  --btn-shadow: rgba(0,0,0,0.25);
+  --btn-hover-bg: #49413e;
   --btn-hover-text: #ffffff;
 
-  /* typografia */
-  --font-family: 'Roboto', sans-serif;
-  --line-height: 1.75;
-  --letter-spacing: 0.009375rem;
+  /* Typografia */
+  --font-reading: 'Literata', Georgia, serif;
+  --font-heading: 'Inter', sans-serif;
+  --font-family: var(--font-reading);
+
+  --line-height: 1.9;
+  --letter-spacing: 0.005em;
+
+  /* Sivurakenne */
+  --content-width: 720px;
+  --reading-width: 680px;
+
+  /* Muotoilu */
+  --radius: 12px;
+  --transition: 0.2s ease;
+
+  /* Varjot */
+  --card-shadow: 0 4px 16px rgba(0,0,0,0.17);
 }
 
-/* Vaalea teema: asetetaan sekä html:lle että body:lle (varmistus periytymiselle) */
+
+/* ==================================================
+   2. VAALEA TEEMA
+   ================================================== */
+
 html.light-theme,
 body.light-theme {
-  --bg-gradient-top: #f5f5f7;
-  --bg-gradient-bottom: #ffffff;
-  --text-primary: #222222;
-  --text-secondary: #333333;
-  --text-muted: #666666;
-  --heading-shadow: rgba(0,0,0,0.08);
-  --border-color: rgba(0,0,0,0.12);
-  --strong-bg: rgba(0,0,0,0.05);
-  --strong-border: #444;
+  color-scheme: light;
 
-  --btn-bg: #ffffff;
-  --btn-text: #222222;
-  --btn-border: rgba(0,0,0,0.08);
-  --btn-shadow: rgba(0,0,0,0.15);
-  --btn-hover-bg: #f2f2f2;
-  --btn-hover-text: #111111;
+  --bg-gradient-top: #f4f0e9;
+  --bg-gradient-bottom: #fffdf9;
+  --bg-surface: #ffffff;
+
+  --text-primary: #292522;
+  --text-secondary: #49423d;
+  --text-muted: #777069;
+
+  --heading-shadow: rgba(0,0,0,0.04);
+
+  --border-color: rgba(65,50,40,0.14);
+  --strong-bg: rgba(80,60,40,0.035);
+  --strong-border: #8d8175;
+
+  --btn-bg: #f4f0e9;
+  --btn-text: #292522;
+  --btn-border: rgba(0,0,0,0.13);
+  --btn-shadow: rgba(0,0,0,0.09);
+  --btn-hover-bg: #eae3d9;
+  --btn-hover-text: #171411;
+
+  --card-shadow: 0 4px 16px rgba(0,0,0,0.055);
 }
 
-/* ============================= */
-/* Yleiset asetukset             */
-/* ============================= */
+
+/* ==================================================
+   3. YLEISET ASETUKSET
+   ================================================== */
+
 *,
 *::before,
-*::after { box-sizing: border-box; }
+*::after {
+  box-sizing: border-box;
+}
 
 html {
   margin: 0;
   padding: 0;
+
   scroll-behavior: smooth;
   overflow-x: hidden;
-  background: linear-gradient(to bottom, var(--bg-gradient-top), var(--bg-gradient-bottom));
+
+  background:
+    linear-gradient(
+      to bottom,
+      var(--bg-gradient-top),
+      var(--bg-gradient-bottom)
+    );
 }
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 1rem;
+
+  min-height: 100vh;
+
   font-family: var(--font-family);
+  font-size: 1.05rem;
   line-height: var(--line-height);
   letter-spacing: var(--letter-spacing);
-  background-color: transparent;
+
+  color: var(--text-primary);
+  background: transparent;
+
   overflow-x: hidden;
-  min-height: 100vh;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Sisältö */
+
+/* ==================================================
+   4. SISÄLTÖALUE
+   ================================================== */
+
 main {
   position: relative;
   z-index: 1;
+
   width: 100%;
-  max-width: 750px;
+  max-width: var(--content-width);
+
   margin: 0 auto;
-  padding: 3rem 1.5rem;
-  font-size: 1.25rem;
+  padding: 3rem 1.5rem 5rem;
+
   overflow-wrap: break-word;
 }
 
-h1,h2,h3,h4,h5 {
-  font-size: clamp(1.6rem, 4vw, 2.8rem);
-  line-height: clamp(2.2rem, 5vw, 3.8rem);
-  letter-spacing: 0.03rem;
-  text-align: center;
+
+/* Varsinainen lukupalsta */
+
+.reading-content {
+  max-width: var(--reading-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ==================================================
+   5. OTSIKOT
+   ================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
   color: var(--text-primary);
-  margin-top: 2rem;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  text-shadow: 0 0 6px var(--heading-shadow);
+
+  text-shadow: 0 0 5px var(--heading-shadow);
+
+  line-height: 1.4;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  text-align: center;
+  text-transform: none;
+
+  letter-spacing: 0.015em;
+
+  margin-top: 2.7rem;
+  margin-bottom: 1.6rem;
+
+  padding-bottom: 0.75rem;
+
   border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(1.3rem, 3vw, 1.65rem);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 h6 {
-  font-size: clamp(1.4rem, 3vw, 1.7rem);
-  color: var(--text-secondary);
-  text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.02rem;
-  text-shadow: 0 0 4px var(--heading-shadow);
+  font-family: var(--font-reading);
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+
+  font-weight: 400;
   font-style: italic;
+
+  text-align: center;
+
+  color: var(--text-secondary);
+
+  margin: 2rem 0 1rem;
 }
+
+
+/* ==================================================
+   6. LEIPÄTEKSTI
+   ================================================== */
 
 p {
+  font-family: var(--font-reading);
+
   color: var(--text-primary);
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  margin-top: 0;
-  margin-bottom: 2rem;
-  line-height: 1.75;
+
+  font-size: clamp(1.02rem, 2vw, 1.13rem);
+  line-height: 1.9;
+
+  letter-spacing: 0.003em;
+
+  margin: 1.15em 0 1.4em;
+
+  text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
 }
 
-ul li {
+
+/* Lihavointi */
+
+strong,
+b {
+  font-weight: 600;
   color: var(--text-primary);
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  line-height: 1.6;
-  margin-bottom: 0.25rem;
 }
 
-em { color: var(--text-muted); font-style: italic; }
 
-/* Teemanvaihtonappi */
+/* Kursivointi */
+
+em,
+i {
+  color: var(--text-secondary);
+}
+
+
+/* Linkit tekstin sisällä */
+
+a {
+  color: var(--text-secondary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--text-primary);
+}
+
+
+/* ==================================================
+   7. LISTAT
+   ================================================== */
+
+ul,
+ol {
+  padding-left: 1.6rem;
+  margin: 1.3rem 0 1.8rem;
+}
+
+ul li,
+ol li {
+  font-family: var(--font-reading);
+
+  color: var(--text-primary);
+
+  font-size: 1.05rem;
+  line-height: 1.8;
+
+  margin-bottom: 0.45rem;
+}
+
+
+/* ==================================================
+   8. FILOSOFISET DIALOGIT
+   ================================================== */
+
+/* Puhujan nimi */
+
+.speaker {
+  display: inline-block;
+
+  font-family: var(--font-heading);
+
+  font-weight: 700;
+  font-size: 0.88em;
+
+  font-variant: small-caps;
+  letter-spacing: 0.055em;
+
+  color: var(--text-primary);
+
+  margin-right: 0.4rem;
+}
+
+
+/* Dialogin kokonaisuus */
+
+.dialogue {
+  margin: 2rem 0;
+}
+
+
+/* Dialogin puheenvuorot */
+
+.dialogue p {
+  font-family: var(--font-reading);
+
+  font-size: clamp(1.02rem, 2vw, 1.13rem);
+  line-height: 1.95;
+
+  margin: 1.5rem 0;
+
+  color: var(--text-primary);
+}
+
+
+/* ==================================================
+   9. FILOSOFISET AJATUKSET JA KOROSTUKSET
+   ================================================== */
+
+.philosophical-note {
+  margin: 2.5rem 0;
+  padding: 1rem 1.5rem;
+
+  border-left: 3px solid var(--strong-border);
+
+  background: var(--strong-bg);
+
+  border-radius: 0 6px 6px 0;
+
+  font-family: var(--font-reading);
+  font-size: 1.12rem;
+
+  font-style: italic;
+  line-height: 1.9;
+
+  color: var(--text-secondary);
+}
+
+
+/* Lainaukset */
+
+blockquote {
+  margin: 2rem 0;
+  padding: 0.5rem 1.5rem;
+
+  border-left: 2px solid var(--border-color);
+
+  font-family: var(--font-reading);
+  font-size: 1.1rem;
+
+  font-style: italic;
+  line-height: 1.9;
+
+  color: var(--text-secondary);
+}
+
+
+/* ==================================================
+   10. TEEMANVAIHTONAPPI
+   ================================================== */
+
 #themeToggle {
   position: fixed;
+
   top: 1rem;
   right: 1rem;
+
   z-index: 1000;
-  padding: 0.6rem 1rem;
-  font-size: 0.95rem;
+
+  padding: 0.65rem 1.1rem;
+
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
   font-weight: 600;
+
+  color: var(--btn-text);
+  background: var(--btn-bg);
+
+  border: 1px solid var(--btn-border);
   border-radius: 10px;
+
   cursor: pointer;
 
-  background-color: var(--btn-bg);
-  color: var(--btn-text);
-  border: 1px solid var(--btn-border);
-  box-shadow: 0 8px 20px var(--btn-shadow);
+  box-shadow: 0 5px 16px var(--btn-shadow);
+
+  backdrop-filter: blur(6px);
+
   transition:
-    background-color 0.18s ease,
-    color 0.18s ease,
-    transform 0.08s ease,
-    box-shadow 0.18s ease,
-    border-color 0.18s ease;
-  backdrop-filter: saturate(1.2) blur(6px);
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
 #themeToggle:hover {
-  background-color: var(--btn-hover-bg);
+  background: var(--btn-hover-bg);
   color: var(--btn-hover-text);
-  box-shadow: 0 10px 24px var(--btn-shadow);
+
+  transform: translateY(-2px);
 }
 
-#themeToggle:active { transform: translateY(1px); }
-
-/* Reduced transparency fallback (prefers-reduced-transparency ei ole laajasti tuettu, poistetaan epävarmuus) */
-@media (prefers-reduced-motion: reduce) {
-  #themeToggle { backdrop-filter: none; }
+#themeToggle:active {
+  transform: translateY(0);
 }
 
-/* Selection joka toimii molemmissa teemoissa */
-::selection {
-  background: var(--text-primary);
-  color: var(--bg-gradient-bottom);
-}
 
-/* Artikkelilista */
+/* ==================================================
+   11. ARTIKKELILISTA
+   ================================================== */
+
 .article-list {
+  display: grid;
+
+  grid-template-columns: 1fr;
+  gap: 1.6rem;
+
   list-style: none;
+
   padding: 0;
   margin: 3rem 0;
-  display: grid;
-  gap: 2rem;
 }
 
+
 /* Artikkelikortti */
+
 .article-box {
-  padding: 1.5rem;
-  border: 1px solid var(--border-color);
+  padding: 1.6rem;
+
   background: var(--strong-bg);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
+
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+
+  box-shadow: var(--card-shadow);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
 }
 
 .article-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  transform: translateY(-3px);
+
+  box-shadow: 0 9px 22px var(--btn-shadow);
 }
 
-/* Otsikko */
+
+/* Artikkelin otsikko */
+
 .article-title {
-  margin: 0 0 1rem 0;
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
-  color: var(--text-primary);
-  text-align: left;
+  margin: 0 0 1rem;
+  padding: 0;
+
   border: none;
+
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+
+  font-weight: 600;
+
+  color: var(--text-primary);
+
+  text-align: left;
+  text-transform: none;
+
   text-shadow: none;
 }
 
-/* Preview */
+
+/* Artikkelin esittelyteksti */
+
 .article-preview {
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1.5rem;
+
+  font-family: var(--font-reading);
+  font-size: 1.02rem;
+
+  line-height: 1.8;
+
   color: var(--text-secondary);
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
 }
 
-/* Linkki */
+
+/* Artikkelin linkki */
+
 .article-link {
   display: inline-block;
+
+  padding: 0.6rem 1.1rem;
+
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+
   font-weight: 600;
+
   color: var(--btn-text);
   background: var(--btn-bg);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+
   border: 1px solid var(--btn-border);
+  border-radius: 8px;
+
   text-decoration: none;
-  transition: background-color 0.18s ease, color 0.18s ease;
+
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition);
 }
 
 .article-link:hover {
   background: var(--btn-hover-bg);
   color: var(--btn-hover-text);
-}
 
-body {
-  line-height: 1.6;
-  max-width: 42rem;
-  margin: auto;
-  font-size: 1.05rem;
-}
-
-p {
-  margin: 0.9em 0;
-}
-
-.speaker {
-  font-weight: 600;
-  font-variant: small-caps;
-  letter-spacing: 0.5px;
-  margin-right: 0.25em;
-}
-
-p {
-  text-rendering: optimizeLegibility;
-}
-
-main {
-  padding-top: 1.5rem;
-}
-
-h1 {
-  font-size: 1.8rem;
-  letter-spacing: 1px;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-body {
-  padding: 0 1rem;
+  transform: translateY(-2px);
 }
 
 
-body {
-  font-family: "Inter", "Helvetica Neue", sans-serif;
+/* ==================================================
+   12. TEKSTIN VALINTA
+   ================================================== */
+
+::selection {
+  background: var(--text-primary);
+  color: var(--bg-gradient-bottom);
 }
 
-strong {
-  display: inline;
-  font-weight: 600;
-  font-size: 1.1rem;
-  padding: 0.1rem 0.2rem;
-  background-color: transparent;
-  border-left: none;
-  text-shadow: none;
-  color: var(--text-secondary);
+
+/* ==================================================
+   13. NÄPPÄIMISTÖKÄYTTÖ
+   ================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--text-secondary);
+  outline-offset: 4px;
+}
+
+
+/* ==================================================
+   14. MOBIILINÄKYMÄ
+   ================================================== */
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 0 0.8rem;
+    font-size: 1rem;
+  }
+
+  main {
+    padding: 2.5rem 0.5rem 3rem;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  h2 {
+    font-size: 1.45rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 1.02rem;
+    line-height: 1.85;
+  }
+
+  .dialogue p {
+    line-height: 1.9;
+  }
+
+  .article-box {
+    padding: 1.2rem;
+  }
+
+  #themeToggle {
+    top: 0.6rem;
+    right: 0.6rem;
+
+    padding: 0.5rem 0.8rem;
+    font-size: 0.82rem;
+  }
+
+}
+
+
+/* ==================================================
+   15. VÄHENNETTY LIIKE
+   ================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .article-box:hover,
+  .article-link:hover,
+  #themeToggle:hover {
+    transform: none;
+  }
+
+}
+
+
+/* ==================================================
+   16. TULOSTUS
+   ================================================== */
+
+@media print {
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #222222 !important;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  main {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .speaker {
+    color: #222222 !important;
+    text-shadow: none !important;
+  }
+
+  #themeToggle {
+    display: none;
+  }
+
+  .article-box {
+    box-shadow: none;
+    border: 1px solid #cccccc;
+  }
+
+  .article-box:hover {
+    transform: none;
+  }
+
+  a {
+    color: #222222;
+  }
+
 }
